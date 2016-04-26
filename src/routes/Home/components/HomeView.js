@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+
+import Questionnaire from 'components/Questionnaire';
 
 export const HomeView = () => (
   <div>
-    <h2>Home View</h2>
+    <Questionnaire />
   </div>
-)
+);
 
-export default HomeView
+export default HomeView;

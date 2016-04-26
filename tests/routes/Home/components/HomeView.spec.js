@@ -1,17 +1,19 @@
-import React from 'react'
-import { HomeView } from 'routes/Home/components/HomeView'
-import { render } from 'enzyme'
+import React from 'react';
 
-describe('(View) Home', () => {
-  let _component
+import { HomeView } from 'routes/Home/components/HomeView';
+import Questionnaire from 'components/Questionnaire';
+import { shallow } from 'enzyme';
+
+describe('HomeView', () => {
+  let _component;
 
   beforeEach(() => {
-    _component = render(<HomeView />)
+    _component = shallow(<HomeView />);
   })
 
-  it('Renders a welcome message', () => {
-    const welcome = _component.find('h2')
-    expect(welcome).to.exist
-    expect(welcome.text()).to.match(/Home View/)
-  })
-})
+  it('Renders a Questionnaire', () => {
+    const questionnaire = _component.find(Questionnaire);
+
+    expect(questionnaire).to.exist;
+  });
+});
