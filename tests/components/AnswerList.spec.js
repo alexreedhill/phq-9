@@ -1,4 +1,6 @@
 import React from 'react'
+// Shallow rendering helps to ensure that we're not accidentally child
+// component behavior, though it does lack some features of a full render
 import { shallow } from 'enzyme'
 
 import Answer from 'components/Answer'
@@ -22,6 +24,6 @@ describe('AnswerList', () => {
     const { answers, component } = setup()
     const answerComponents = component.find(Answer)
 
-    expect(answerComponents.map( answer => answer.props() )).to.deep.eql(answers)
+    expect(answerComponents.map( answer => answer.props() )).to.deep.equal(answers)
   })
 })

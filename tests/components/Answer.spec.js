@@ -1,4 +1,5 @@
 import React from 'react'
+// This library is helpful for testing stateless components
 import { mount } from 'enzyme'
 
 import Answer from 'components/Answer'
@@ -6,7 +7,7 @@ import Answer from 'components/Answer'
 function setup() {
   let props = {
     text: 'answer 1',
-    value: 1,
+    id: 1,
     onAnswerClick: sinon.spy()
   }
   let wrapper = mount(<Answer { ...props }/>);
@@ -29,6 +30,6 @@ describe('Answer', () => {
 
     wrapper.find('li').simulate('click')
 
-    expect(props.onAnswerClick.calledWith(props.value)).to.be.true
+    expect(props.onAnswerClick.calledWith(props.id)).to.be.true
   })
 })
