@@ -1,6 +1,6 @@
 import React from 'react'
 // This library is helpful for testing stateless components
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import Answer from 'components/Answer'
 
@@ -12,32 +12,46 @@ function setup() {
     onAnswerClick: sinon.spy(),
     selected: true
   }
-  let wrapper = mount(<Answer { ...props }/>);
+  let component = shallow(<Answer { ...props }/>);
 
   return {
-    wrapper,
+    component,
     props
   }
 }
 
 describe('Answer', () => {
   it('renders the answer text', () => {
-    const { wrapper } = setup()
+    const { component } = setup()
 
-    expect(wrapper.find('li').text()).to.equal('answer 1')
+    expect(component.text()).to.equal('answer 1')
   })
 
   it('uses the id as a value', () => {
-    const { wrapper, props } = setup()
+    const { component, props } = setup()
 
-    expect(wrapper.find('li')).to.have.attr('value', '1')
+    expect(component).to.have.attr('value', '1')
   })
 
   it('calls onAnswerClick when clicked with value', () => {
-    const { wrapper, props } = setup()
+    const { component, props } = setup()
 
-    wrapper.find('li').simulate('click')
+    component.simulate('click')
 
     expect(props.onAnswerClick.calledWith(props.questionId, props.id)).to.be.true
   })
+
+  it('className is selected if selected', () => {
+    const { component } = setup()
+
+    expect(component).to.have.className('selected')
+  });
+
+  it('className is not selected if not selected', () => {
+    let { props } = setup()
+    props.selected = false;
+    const component = shallow(<Answer { ...props } />)
+
+    expect(component).not.to.have.className('selected')
+  });
 })
