@@ -5,31 +5,25 @@ import * as types from 'constants/questionnaire'
 const initialState = {
   questions: [],
   answers: [],
-  selectedAnswers: {
-    selections: {},
-    score: 0
+  questionAnswers: {
   },
 }
 
-export const selectedAnswers = (state, { type, answerId, questionId }) => {
+export const questionAnswers = (state, { type, answerId, questionId }) => {
   switch(type) {
     case types.SELECT_ANSWER:
-      return {
-        selections: Object.assign({}, state.selections, {
+      return Object.assign({}, state, {
           [questionId]: answerId
-        }),
-        score: state.score + answerId - state.selections[answerId]
-      }
+        })
     default:
       return state
   }
 }
 
-// We can use combineReducers here eventually once we have more
-const questionnaire = (state, action) => {
+const questionnaire = (state = initialState, action) => {
   return {
     ...state,
-    selectedAnswers: selectedAnswers(state.selectedAnswers, action)
+    questionAnswers: questionAnswers(state.questionAnswers, action)
   }
 }
 

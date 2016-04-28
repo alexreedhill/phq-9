@@ -7,23 +7,34 @@ import Answer from 'components/Answer'
 import AnswerList from 'components/AnswerList'
 
 function setup() {
-  let answers = [
-    { text: 'answer 1', value: 1 },
-    { text: 'answer 2', value: 2 }
-  ]
-  let component = shallow(<AnswerList answers={ answers } />)
+  let props = {
+    answers: [
+      { text: 'answer 1', id: 1 },
+      { text: 'answer 2', id: 2 }
+    ],
+    selectedAnswer: 2,
+    onAnswerClick: sinon.spy()
+  }
+
+  let component = shallow(<AnswerList { ...props } />)
 
   return {
-    answers,
     component
   }
 }
 
 describe('AnswerList', () => {
   it('renders a list of Answers', () => {
-    const { answers, component } = setup()
+    const { component } = setup()
     const answerComponents = component.find(Answer)
 
-    expect(answerComponents.map( answer => answer.props() )).to.deep.equal(answers)
+    expect(answerComponents.length).to.equal(2)
   })
+
+  it('may have a selected answer', () => {
+    const { component } = setup()
+
+    expect(component.find(Answer).first().props().selected).to.be.false
+    expect(component.find(Answer).last().props().selected).to.be.true
+  });
 })

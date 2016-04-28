@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Questionnaire from 'components/Questionnaire';
+import AnsweredQuestionnaire from 'containers/AnsweredQuestionnaire';
 
 export const HomeView = () => (
   <div>
-    <Questionnaire />
+    <AnsweredQuestionnaire />
   </div>
 );
 

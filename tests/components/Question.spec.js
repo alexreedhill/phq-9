@@ -6,7 +6,7 @@ import Question from 'components/Question'
 
 function setup() {
   let answers = [{}, {}]
-  let props = { text: 'question', answers: answers }
+  let props = { text: 'question', id: 1 }
   let component = shallow(<Question { ...props }/>)
 
   return {
@@ -20,11 +20,5 @@ describe('Question', () => {
     const { component } = setup()
 
     expect(component.find('p').text()).to.equal('question')
-  })
-
-  it('renders the AnswerList', () => {
-    const { component, answers } = setup()
-
-    expect(component.find(AnswerList).props().answers).to.equal(answers)
   })
 })

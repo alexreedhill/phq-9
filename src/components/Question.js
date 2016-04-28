@@ -2,11 +2,10 @@ import React from 'react'
 
 import AnswerList from 'components/AnswerList'
 
-const Question = ({ text, answers }) => (
-  <li>
+const Question = ({ text }) => (
+  <div className="question">
     <p>{ text }</p>
-    <AnswerList answers={ answers } />
-  </li>
+  </div>
 )
 
 export default Question

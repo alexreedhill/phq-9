@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { HomeView } from 'routes/Home/components/HomeView';
-import Questionnaire from 'components/Questionnaire';
+import AnsweredQuestionnaire from 'containers/AnsweredQuestionnaire';
 import { shallow } from 'enzyme';
 
 describe('HomeView', () => {
@@ -12,7 +12,7 @@ describe('HomeView', () => {
   })
 
   it('Renders a Questionnaire', () => {
-    const questionnaire = _component.find(Questionnaire);
+    const questionnaire = _component.find(AnsweredQuestionnaire);
 
     expect(questionnaire).to.exist;
   });

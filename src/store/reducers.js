@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux'
 import { routerReducer as router } from 'react-router-redux'
 
+import questionnaire from 'reducers/questionnaire'
+
 export const reducers = (asyncReducers) => {
   return combineReducers({
-    // Add sync reducers here
+    questionnaire,
     router,
-    ...asyncReducers })
+    ...asyncReducers
+  })
 }
 
 export const injectReducer = (store, { key, reducer }) => {
