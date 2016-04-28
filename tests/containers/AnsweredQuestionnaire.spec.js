@@ -5,7 +5,6 @@ import { Router } from 'react-router'
 import { createMemoryHistory } from 'react-router'
 
 import createStore from 'store/createStore'
-import Results from 'components/Results'
 import ResultsView from 'routes/Results/components/ResultsView'
 import Questionnaire from 'components/Questionnaire'
 

@@ -4,7 +4,7 @@ import Score from 'components/Score'
 
 const Results = ({ currentScore, maxScore }) => (
   <div className="results">
-    <Score currentScore={ currentScore } maxScore={ maxScore }/>
+    <Score currentScore={ currentScore } maxScore={ maxScore } />
   </div>
 )
 
