@@ -3,9 +3,10 @@ import React from 'react'
 import AnswerList from 'components/AnswerList'
 import Question from 'components/Question'
 import Score from 'components/Score'
+import SubmitButton from 'components/SubmitButton'
 
 const Questionnaire = ({
-  questions, answers, questionAnswers, onAnswerClick, currentScore, maxScore
+  questions, answers, questionAnswers, onAnswerClick, onSubmit
 }) => (
   <div className="questionnaire">
     <ul className="questions-list">
@@ -21,7 +22,7 @@ const Questionnaire = ({
         )
       }
     </ul>
-    <Score currentScore={ currentScore } maxScore={ maxScore } />
+    <SubmitButton onSubmit={ onSubmit } />
   </div>
 )
 

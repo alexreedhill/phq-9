@@ -1,20 +1,20 @@
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 
 import Questionnaire from 'components/Questionnaire'
 import { selectAnswer } from '../actions/questionnaire'
 
 const mapStateToProps = ({ questionnaire }) => {
-  return {
-    ...questionnaire,
-    currentScore: Object.values(questionnaire.questionAnswers).reduce((x, y) => x + y),
-    maxScore: (questionnaire.answers.length - 1) * (questionnaire.questions.length)
-  }
+  return questionnaire
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onAnswerClick: (questionId, answerId) => {
       dispatch(selectAnswer(questionId, answerId))
+    },
+    onSubmit: () => {
+      dispatch(push('/results'))
     }
   }
 }

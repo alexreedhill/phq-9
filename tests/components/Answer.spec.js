@@ -4,15 +4,15 @@ import { shallow } from 'enzyme'
 
 import Answer from 'components/Answer'
 
-function setup() {
+function setup(opts = {}) {
   let props = {
     text: 'answer 1',
     id: 1,
     questionId: 2,
     onAnswerClick: sinon.spy(),
-    selected: true
+    selected: opts.selected || false
   }
-  let component = shallow(<Answer { ...props }/>);
+  let component = shallow(<Answer { ...props } />);
 
   return {
     component,
@@ -42,15 +42,13 @@ describe('Answer', () => {
   })
 
   it('className is selected if selected', () => {
-    const { component } = setup()
+    const { component } = setup({ selected: true })
 
     expect(component).to.have.className('selected')
   });
 
   it('className is not selected if not selected', () => {
-    let { props } = setup()
-    props.selected = false;
-    const component = shallow(<Answer { ...props } />)
+    let { component } = setup()
 
     expect(component).not.to.have.className('selected')
   });

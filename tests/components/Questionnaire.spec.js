@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 
 import AnswerList from 'components/AnswerList'
 import Score from 'components/Score'
+import SubmitButton from 'components/SubmitButton'
 import Question from 'components/Question'
 import Questionnaire from 'components/Questionnaire'
 
@@ -22,8 +23,7 @@ function setup() {
       1: null
     },
     onAnswerClick: sinon.spy(),
-    currentScore: 0,
-    maxScore: 4
+    onSubmit: sinon.spy()
   }
   let component = shallow(<Questionnaire { ...props } />)
 
@@ -57,11 +57,11 @@ describe('Questionnaire', () => {
     )
   })
 
-  it('renders a score', () => {
-    const { component } = setup()
+  it('renders a SubmitButton', () => {
+    const { props, component } = setup()
 
-    const scoreComponent = component.find(Score)
+    const submitButton = component.find(SubmitButton)
 
-    expect(scoreComponent).to.exist
-  });
+    expect(submitButton.props()).to.deep.equal({ onSubmit: props.onSubmit })
+  })
 })

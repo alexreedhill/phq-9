@@ -1,13 +1,16 @@
-import React from 'react'
+import { mount } from 'enzyme'
 import { Provider } from 'react-redux'
-import { mount, shallow } from 'enzyme'
+import React from 'react'
+import { Router } from 'react-router'
+import { createMemoryHistory } from 'react-router'
 
 import createStore from 'store/createStore'
+import Results from 'components/Results'
+import ResultsView from 'routes/Results/components/ResultsView'
 import Questionnaire from 'components/Questionnaire'
-import Score from 'components/Score'
-import AnsweredQuestionnaire from 'containers/AnsweredQuestionnaire'
 
 function setup() {
+  const history = createMemoryHistory('/')
   const store = createStore({
     questionnaire: {
       questions: [{ id: 0 }, { id: 1 }],
@@ -17,10 +20,11 @@ function setup() {
         1: 2
       }
     }
-  })
+  }, history)
+  const routes = require('routes/index').default(store)
   const wrapper = mount(
-    <Provider store={store}>
-      <AnsweredQuestionnaire />
+    <Provider store={ store }>
+      <Router routes={ routes } history={ history } />
     </Provider>
   )
   const component = wrapper.find(Questionnaire)
@@ -41,19 +45,13 @@ describe('(Container) AnsweredQuestionnaire', () => {
     expect(store.getState().questionnaire.questionAnswers).to.deep.equal({ 0: 0, 1: 2 })
   })
 
-  it('passes the current score to the score component', () => {
-    const { wrapper } = setup()
+  it('submits the questionnaire on click', () => {
+    const { store, component, wrapper } = setup()
 
-    const score = wrapper.find(Score)
+    component.props().onSubmit()
+    wrapper.update()
+    const resultsView = wrapper.find(ResultsView)
 
-    expect(score.props().currentScore).to.equal(3)
-  })
-
-  it('passes the max score to the score component', () => {
-    const { wrapper } = setup()
-
-    const score = wrapper.find(Score)
-
-    expect(score.props().maxScore).to.equal(4)
+    expect(resultsView).to.exist
   })
 })
