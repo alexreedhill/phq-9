@@ -20,4 +20,32 @@
   *:after {
     box-sizing: inherit;
   }
+
+  .questionnaire {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .questions-list li {
+    list-style-type: none;
+  }
+
+  .questions-list > li {
+    margin: 2rem;
+  }
+
+  .question > p {
+    font-weight: bold;
+  }
+
+  .answer-list {
+    padding: 0;
+    margin: 0 auto;
+    width: 25%;
+  }
+
+  .selected {
+    background-color: #add8e6;
+    color: white;
+  }
 }

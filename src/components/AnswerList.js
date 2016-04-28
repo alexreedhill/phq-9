@@ -3,7 +3,7 @@ import React from 'react'
 import Answer from 'components/Answer'
 
 const AnswerList = ({ answers, questionId, selectedAnswer, onAnswerClick }) => (
-  <ul>
+  <ul className="answer-list">
     {
       answers.map(answer =>
         <Answer { ...answer }
