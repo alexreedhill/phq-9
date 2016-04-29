@@ -19,10 +19,9 @@ export const questionAnswers = (state, { type, answerId, questionId }) => {
 }
 
 const questionnaire = (state = initialState, action) => {
-  return {
-    ...state,
+  return Object.assign({}, state, {
     questionAnswers: questionAnswers(state.questionAnswers, action)
-  }
+  })
 }
 
 export default questionnaire

@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 import { routerReducer as router } from 'react-router-redux'
 
 import questionnaire from 'reducers/questionnaire'
+import therapists from 'reducers/therapists'
 
 export const reducers = (asyncReducers) => {
   return combineReducers({
     questionnaire,
+    therapists,
     router,
     ...asyncReducers
   })

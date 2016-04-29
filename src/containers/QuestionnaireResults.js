@@ -2,14 +2,30 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Results from 'components/Results'
+import { selectTherapist, submitTherapist } from 'actions/therapists'
 
-const mapStateToProps = ({ questionnaire }) => {
+const mapStateToProps = ({ questionnaire, therapists }) => {
   return {
     currentScore: Object.values(questionnaire.questionAnswers).reduce((x, y) => x + y),
-    maxScore: (questionnaire.answers.length - 1) * questionnaire.questions.length
+    maxScore: (questionnaire.answers.length - 1) * questionnaire.questions.length,
+    therapists: therapists,
   }
 }
 
-const QuestionnaireResults = connect(mapStateToProps)(Results)
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    onTherapistClick: (name) => {
+      dispatch(selectTherapist(name))
+    },
+    onTherapistSubmit: () => {
+      dispatch(submitTherapist())
+    },
+  }
+}
+
+const QuestionnaireResults = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Results)
 
 export default QuestionnaireResults

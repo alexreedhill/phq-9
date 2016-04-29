@@ -21,9 +21,17 @@
     box-sizing: inherit;
   }
 
+  .container {
+    margin: 20px;
+  }
+
   .questionnaire {
     width: 75%;
     margin: 0 auto;
+  }
+
+  .questions-list {
+    padding: 0;
   }
 
   .questions-list li {
