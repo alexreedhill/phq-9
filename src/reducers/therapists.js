@@ -10,6 +10,7 @@ const initialState = {
 const therapists = (state = initialState, { type, name }) => {
   switch(type) {
     case types.SELECT_THERAPIST:
+      // Reducers can't mutate state. Object.assign is your friend.
       return Object.assign({}, state, {
         entities: state.entities.map(therapist => {
           return Object.assign({}, therapist, {

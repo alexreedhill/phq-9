@@ -26,7 +26,10 @@
   }
 
   .questionnaire {
-    width: 75%;
+    @media (min-width: 800px) {
+      width: 75%;
+    }
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -34,9 +37,11 @@
     padding: 0;
   }
 
-  .questions-list li {
+  li {
     list-style-type: none;
   }
+
+
 
   .questions-list > li {
     margin: 2rem;
@@ -44,16 +49,63 @@
 
   .question > p {
     font-weight: bold;
+    font-size: 20px;
+    @media (min-width: 800px) {
+      font-size: 15px
+    }
   }
 
   .answer-list {
     padding: 0;
     margin: 0 auto;
-    width: 25%;
+    @media (min-width: 800px) {
+      width: 25%;
+    }
+    width: 75%;
+
+    li {
+      @media (max-width: 799px) {
+        height: 50px;
+        line-height: 50px;
+        font-size: 15px;
+      }
+    }
   }
 
   .selected {
     background-color: #add8e6;
     color: white;
+  }
+
+  .therapist-contact-form {
+    margin: 20px auto;
+    @media (min-width: 800px) {
+      width: 50%;
+    }
+    width: 100%
+  }
+
+  .therapists {
+    margin: 20px auto;
+    width: 50%;
+
+    li {
+      @media (max-width: 799px) {
+        height: 50px;
+        line-height: 50px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .therapists {
+    padding: 0;
+  }
+
+  button {
+    @media (max-width: 799px) {
+      height: 3em;
+      width: 100%;
+    }
   }
 }

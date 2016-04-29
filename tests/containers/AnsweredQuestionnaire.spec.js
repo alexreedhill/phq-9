@@ -9,6 +9,9 @@ import ResultsView from 'routes/Results/components/ResultsView'
 import Questionnaire from 'components/Questionnaire'
 
 function setup() {
+  // There's some involved setup here to get react router
+  // working in the test environment. If I had more routes I would
+  // pull this into a test helper and look into cleaner solutions.
   const history = createMemoryHistory('/')
   const store = createStore({
     questionnaire: {

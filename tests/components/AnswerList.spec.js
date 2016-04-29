@@ -1,6 +1,6 @@
 import React from 'react'
-// Shallow rendering helps to ensure that we're not accidentally child
-// component behavior, though it does lack some features of a full render
+// Shallow rendering helps to ensure that we're not accidentally testing child
+// component behavior
 import { shallow } from 'enzyme'
 
 import Answer from 'components/Answer'
