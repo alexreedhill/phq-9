@@ -20,7 +20,7 @@ function setup() {
     ],
     questionAnswers: {
       0: null,
-      1: null
+      1: 1
     },
     onAnswerClick: sinon.spy(),
     onSubmit: sinon.spy()
@@ -49,12 +49,10 @@ describe('Questionnaire', () => {
     const answerListComponents = component.find(AnswerList)
 
     expect(answerListComponents.length).to.equal(2)
-    expect(answerListComponents.first().props()).to.deep.equal({
+    expect(answerListComponents.first().props()).to.include({
       answers: props.answers,
-      questionId: 0,
-      selectedAnswer: null,
-      onAnswerClick: props.onAnswerClick}
-    )
+      selectedAnswer: null
+    })
   })
 
   it('renders a SubmitButton', () => {

@@ -2,10 +2,9 @@ import React from 'react'
 
 // The components in this directory are stateless, functional React components.
 // They have no dependency on Redux.
-const Answer = ({ id, text, questionId, onAnswerClick, selected }) => (
+const Answer = ({ id, text, onAnswerClick, selected }) => (
   <li className={ selected ? "selected" : "" }
-      value={ id }
-      onClick={ onAnswerClick.bind(this, questionId, id) }>
+      onClick={ onAnswerClick.bind(this, id) }>
     { text }
   </li>
 )

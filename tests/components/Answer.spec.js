@@ -8,7 +8,6 @@ function setup(opts = {}) {
   let props = {
     text: 'answer 1',
     id: 1,
-    questionId: 2,
     onAnswerClick: sinon.spy(),
     selected: opts.selected || false
   }
@@ -38,7 +37,7 @@ describe('Answer', () => {
 
     component.simulate('click')
 
-    expect(props.onAnswerClick.calledWith(props.questionId, props.id)).to.be.true
+    expect(props.onAnswerClick.calledWith(props.id)).to.be.true
   })
 
   it('className is selected if selected', () => {

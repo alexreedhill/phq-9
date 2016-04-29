@@ -15,9 +15,8 @@ const Questionnaire = ({
           <li key={ question.id }>
             <Question { ...question } />
             <AnswerList answers={ answers }
-                        questionId={ question.id }
                         selectedAnswer={ questionAnswers[question.id] }
-                        onAnswerClick={ onAnswerClick } />
+                        onAnswerClick={ onAnswerClick.bind(this, question.id) } />
           </li>
         )
       }
