@@ -10,9 +10,7 @@ const initialState = {
 export const questionAnswers = (state, { type, answerId, questionId }) => {
   switch(type) {
     case types.SELECT_ANSWER:
-      return Object.assign({}, state, {
-          [questionId]: answerId
-        })
+      return Object.assign({}, state, { [questionId]: answerId })
     default:
       return state
   }

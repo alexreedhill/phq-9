@@ -26,13 +26,7 @@ describe('Answer', () => {
     expect(component.text()).to.equal('answer 1')
   })
 
-  it('uses the id as a value', () => {
-    const { component, props } = setup()
-
-    expect(component).to.have.attr('value', '1')
-  })
-
-  it('calls onAnswerClick when clicked with value', () => {
+  it('calls onAnswerClick when clicked with id', () => {
     const { component, props } = setup()
 
     component.simulate('click')
